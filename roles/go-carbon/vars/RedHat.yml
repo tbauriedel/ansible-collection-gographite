@@ -1,2 +1,0 @@
----
-go_carbon_release_package: "https://github.com/go-graphite/go-carbon/releases/download/v0.17.3/go-carbon-{{ go_carbon_version }}-1.x86_64.rpm"
