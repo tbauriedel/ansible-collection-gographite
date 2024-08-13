@@ -1,0 +1,17 @@
+---
+graphite_api_pip_package: graphite-api
+
+graphite_api_storage_dir: /var/lib/graphite-api
+graphite_api_search_index: "{{ graphite_api_storage_dir }}/index"
+graphite_api_whisper_directories:
+  - "{{ graphite_api_storage_dir }}/whisper"
+graphite_api_time_zone: Europe/Berlin
+graphite_api_carbon_hosts:
+  - 127.0.0.1:7002
+graphite_api_carbon_timeout: 3
+graphite_api_carbon_retry_delay: 10
+graphite_api_carbon_replication_factor: 1
+
+graphite_api_manage_webserver: true
+graphite_api_webserver_listen: 127.0.0.1:8888
+graphite_api_vhost_address: '*:8888'

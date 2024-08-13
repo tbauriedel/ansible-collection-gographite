@@ -1,0 +1,17 @@
+---
+- name: Include OS specific vars
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_os_family }}.yml"
+        - default.yml
+      paths:
+        - "{{ role_path }}/vars"
+
+- name: Include setup
+  ansible.builtin.include_tasks: setup.yml
+
+- name: Include webserver
+  ansible.builtin.include_tasks: webserver.yml
+  when: graphite_api_manage_webserver | bool

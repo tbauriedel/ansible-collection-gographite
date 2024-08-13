@@ -1,0 +1,16 @@
+---
+graphite_api_package_dependencies:
+  - python3-devel
+  - python3-pip
+  - python3-pytz
+  - python3-flask
+  - python3-cairocffi
+  - python3-pyparsing
+
+graphite_api_webserver_packages:
+  - httpd
+  - python3-mod_wsgi
+
+graphite_api_webserver_user: apache
+graphite_api_webserver_config_dir: /etc/httpd/conf.d
+graphite_api_webserver_service: httpd

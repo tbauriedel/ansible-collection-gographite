@@ -1,0 +1,18 @@
+# {{ ansible_managed }}
+
+search_index: {{ graphite_api_search_index }}
+whisper:
+  directories:
+{% for whisper_dir in graphite_api_whisper_directories %}
+    - {{ whisper_dir }}
+{% endfor %}
+time_zone: {{ graphite_api_time_zone }}
+
+carbon:
+  hosts:
+{% for carbon_host in graphite_api_carbon_hosts %}
+    - {{ carbon_host }}
+{% endfor %}
+  timeout: {{ graphite_api_carbon_timeout }}
+  retry_delay: {{ graphite_api_carbon_retry_delay }}
+  replication_factor: {{ graphite_api_carbon_replication_factor }}

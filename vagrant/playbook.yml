@@ -3,4 +3,5 @@
   become: true
   collections: tbauriedel.graphite
   roles:
-    - go-carbon
+    #- go-carbon
+    - graphite-api

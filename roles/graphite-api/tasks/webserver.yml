@@ -1,0 +1,36 @@
+---
+- name: Install webserver packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ graphite_api_webserver_packages }}"
+
+- name: Ensure webserver wsgi-scripts dir exists
+  ansible.builtin.file:
+    path: /var/www/wsgi-scripts
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Place graphite-api.wsgi script
+  ansible.builtin.template:
+    src: graphite-api.wsgi.j2
+    dest: /var/www/wsgi-scripts/graphite-api.wsgi
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Place webserver config
+  ansible.builtin.template:
+    src: graphite-api.conf.j2
+    dest: "{{ graphite_api_webserver_config_dir }}/graphite-api.conf"
+    mode: '0644'
+    owner: root
+    group: root
+  notify: Restart webserver
+
+- name: Enable apache2 conf on debian based
+  ansible.builtin.command: a2enconf graphite-api
+  when: ansible_os_family == 'Debian'
+  notify: Restart webserver

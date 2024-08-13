@@ -1,0 +1,6 @@
+---
+- name: Restart webserver
+  ansible.builtin.service:
+    name: "{{ graphite_api_webserver_service }}"
+    state: restarted
+    enabled: true
