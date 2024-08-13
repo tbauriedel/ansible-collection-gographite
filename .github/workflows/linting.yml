@@ -1,16 +1,16 @@
 ---
-name: Lint
+name: Linting
 
 on:
   push:
     branches:
-      - "*"
+      - "main"
   pull_request:
     branches:
       - "*"
 
 jobs:
-  yamllint:
+  linting:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the codebase.
