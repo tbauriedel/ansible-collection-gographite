@@ -1,0 +1,71 @@
+# {{ ansible_managed }}
+
+[common]
+user = "{{ go_carbon_user }}"
+graph-prefix = "carbon.agents.{host}"
+metric-endpoint = "local"
+max-cpu = {{ go_carbon_max_cpu }}
+metric-interval = "{{ go_carbon_metric_interval }}"
+
+[whisper]
+data-dir = "{{ go_carbon_storage_dir }}/whisper/"
+schemas-file = "/etc/go-carbon/storage-schemas.conf"
+{%if go_carbon_storage_aggregation | length > 0 %}
+aggregation-file = "/etc/go-carbon/storage-aggregation.conf"
+{% else %}
+aggregation-file = ""
+{% endif %}
+quotas-file = ""
+workers = {{ go_carbon_whisper_workers }}
+max-updates-per-second = 0
+sparse-create = false
+physical-size-factor = 0.75
+flock = false
+compressed = false
+enabled = true
+hash-filenames = true
+remove-empty-file = false
+online-migration = false
+online-migration-rate = 5
+online-migration-global-scope = ""
+
+[cache]
+max-size = {{ go_carbon_cache_max_size }}
+write-strategy = "max"
+
+[udp]
+listen = "{{ go_carbon_upd_listen }}"
+enabled = {{ go_carbon_udp_enabled }}
+buffer-size = 0
+
+[tcp]
+listen = "{{ go_carbon_tcp_listen }}"
+enabled = {{ go_carbon_tcp_enabled }}
+buffer-size = 0
+compression = ""
+
+[carbonlink]
+listen = "{{ go_carbon_carbonlink_listen }}"
+enabled = {{ go_carbon_carbonlink_enabled }}
+read-timeout = "30s"
+
+[pickle]
+listen = "{{ go_carbon_pickle_listen }}"
+max-message-size = 67108864
+enabled = {{ go_carbon_pickle_enabled }}
+buffer-size = 0
+
+{% if go_carbon_extra_conf | length > 0 %}
+{{ go_carbon_extra_conf }}
+{% endif %}
+
+[[logging]]
+logger = ""
+file = "{{ go_carbon_logging_file }}"
+level = "{{ go_carbon_logging_severity }}"
+encoding = "mixed"
+encoding-time = "iso8601"
+encoding-duration = "seconds"
+sample-tick = ""
+sample-initial = 0
+sample-thereafter = 0

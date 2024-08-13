@@ -1,0 +1,9 @@
+{{ ansible_managed | comment }}
+
+{% for schema in go_carbon_storage_schemas %}
+[{{ schema.name }}]
+pattern = {{ schema.pattern }}
+retentions = {{ schema.retentions }}
+compressed = {{ schema.compressed | default(false) }}
+
+{% endfor %}

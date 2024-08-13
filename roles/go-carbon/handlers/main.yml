@@ -1,0 +1,6 @@
+---
+- name: Restart go-carbon
+  ansible.builtin.service:
+    name: go-carbon
+    state: restarted
+    enabled: true
