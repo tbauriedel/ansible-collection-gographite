@@ -1,0 +1,2 @@
+---
+carbonapi_release_package: "https://packagecloud.io/go-graphite/stable/packages/el/{{ ansible_distribution_major_version }}/carbonapi-{{ carbonapi_version }}~1-1.x86_64.rpm/download.rpm"

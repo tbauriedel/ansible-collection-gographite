@@ -17,6 +17,8 @@ go_carbon_carbonlink_enabled: 'true'
 go_carbon_carbonlink_listen: 127.0.0.1:7200
 go_carbon_pickle_enabled: 'true'
 go_carbon_pickle_listen: 127.0.0.1:2004
+go_carbon_carbonserver_enabled: 'true'
+go_carbon_carbonserver_listen: 127.0.0.1:8080
 
 go_carbon_logging_file: /var/log/go-carbon/go-carbon.log
 go_carbon_logging_severity: warn

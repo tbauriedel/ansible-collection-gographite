@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: true
-  collections: tbauriedel.carbonapi
+  collections: tbauriedel.gographite
   roles:
     - go-carbon
+    - carbonapi

@@ -1,0 +1,50 @@
+---
+carbonapi_version: 0.16.0
+carbonapi_user: carbon
+
+carbonapi_listeners:
+  - 127.0.0.1:8888
+carbonapi_prefix: ""
+carbonapi_caching_dns_resolver: "false"
+carbonapi_caching_dns_time: 1m
+carbonapi_expvar:
+  enabled: "false"
+  pprofEnabled: "false"
+  listen: ""
+carbonapi_charsets:
+  - Latin
+carbonapi_pass_headers: []
+carbonapi_log_headers: []
+carbonapi_defines: []
+carbonapi_not_found_rc: 200
+carbonapi_concurency: 1000
+#carbonapi_cache: (dict)
+carbonapi_cpus: 0
+carbonapi_timezone: ""
+carbonapi_extract_tags_form_args: false
+# carbonapi_functions_config: (dict)
+carbonapi_max_batch_size: 100
+carbonapi_graphite:
+  enabled: false
+  host: ""
+  interval: 60s
+  prefix: carbonapi
+  pattern: "{prefix}.{fqdn}"
+carbonapi_max_idle_conns: 10
+carbonapi_pid_file: ""
+carbonapi_slow_log: "3s"
+carbonapi_timeouts:
+  find: "2s"
+  render: "10s"
+  connect: "500ms"
+carbonapi_concurrency_limit_per_server: 0
+carbonapi_keepalive_interval: 30s
+carbonapi_backends:
+  - "http://127.0.0.1:8080"
+carbonapi_backendsv2:
+  - groupname: group1
+    protocol: auto
+    lb_method: broadcast
+    max_tries: 3
+    servers:
+      - "http://127.0.0.1:8080"

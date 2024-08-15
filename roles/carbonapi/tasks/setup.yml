@@ -1,0 +1,38 @@
+---
+- name: Fetch package from source
+  ansible.builtin.get_url:
+    url: "{{ carbonapi_release_package }}"
+    dest: /tmp
+    mode: '0755'
+    timeout: 60
+  register: _fetched_source
+  changed_when: false
+
+- name: Apt - Install carbonapi
+  ansible.builtin.apt:
+    deb: "{{ _fetched_source.dest }}"
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Dnf - Install carbonapi
+  ansible.builtin.dnf:
+    name: "{{ _fetched_source.dest }}"
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure config-dir exists
+  ansible.builtin.file:
+    path: "/etc/carbonapi"
+    state: directory
+    mode: '744'
+    owner: "{{ carbonapi_user }}"
+    group: root
+
+- name: Place carbonapi configuration
+  ansible.builtin.template:
+    src: carbonapi.yaml.j2
+    dest: /etc/carbonapi/carbonapi.yaml
+    mode: '0744'
+    owner: "{{ carbonapi_user }}"
+    group: root
+  notify: Restart carbonapi

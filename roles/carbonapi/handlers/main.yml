@@ -1,0 +1,6 @@
+---
+- name: Restart carbonapi
+  ansible.builtin.service:
+    name: carbonapi
+    state: restarted
+    enabled: true

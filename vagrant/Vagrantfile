@@ -1,12 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 Vagrant.configure("2") do |config|
-    config.vm.define "ubuntu" do |ubuntu|
-        ubuntu.vm.hostname = "graphite-ubuntu"
-        ubuntu.vm.box = "bento/ubuntu-20.04"
-        ubuntu.vm.provision "ansible" do |ansible|
-        ansible.playbook = "playbook.yml"
-        ansible.verbose = "vv"
+    config.vm.define "debian" do |debian|
+        debian.vm.hostname = "graphite"
+        debian.vm.box = "generic/debian12"
+        debian.vm.provision "ansible" do |ansible|
+            ansible.playbook = "playbook.yml"
+            #ansible.verbose = "vvv"
         end
     end
 end

@@ -4,6 +4,7 @@
     url: "{{ go_carbon_release_package }}"
     dest: /tmp
     mode: '0755'
+    timeout: 60
   register: _fetched_source
   changed_when: false
 
@@ -22,6 +23,14 @@
 - name: Ensure storage-dir exists
   ansible.builtin.file:
     path: "{{ go_carbon_storage_dir }}"
+    state: directory
+    mode: '0755'
+    owner: "{{ go_carbon_user }}"
+    group: "{{ go_carbon_group }}"
+
+- name: Ensure whisper-dir exists
+  ansible.builtin.file:
+    path: "{{ go_carbon_storage_dir }}/whisper"
     state: directory
     mode: '0755'
     owner: "{{ go_carbon_user }}"
