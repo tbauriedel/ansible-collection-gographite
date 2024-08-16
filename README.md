@@ -1,3 +1,5 @@
+![Lint](https://github.com/tbauriedel/ansible-collection-gographite/actions/workflows/linting.yml/badge.svg)
+
 # ansible-role-gographite
 
 Installs and configures [go-carbon](https://github.com/go-graphite/go-carbon) and [carbonapi](https://github.com/go-graphite/carbonapi).  
