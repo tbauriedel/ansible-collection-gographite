@@ -6,10 +6,13 @@
 Installs and configures [go-carbon](https://github.com/go-graphite/go-carbon) and [carbonapi](https://github.com/go-graphite/carbonapi).  
 All roles of the collection should work without adding any custom configuration.  
 
+Collection tested on RockyLinux 8, Debian 12 and Ubuntu 22.04.  
+
 ## Roles
 
 * [go-carbon](roles/go-carbon/README.md): Install and configure go-carbon
 * [carbonapi](roles/carbonapi/README.md) Install and configure carbonapi
+
   
 ## Example usage
 ```
