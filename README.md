@@ -1,7 +1,7 @@
 ![Lint](https://github.com/tbauriedel/ansible-collection-gographite/actions/workflows/linting.yml/badge.svg)
 ![Molecule](https://github.com/tbauriedel/ansible-collection-gographite/actions/workflows/molecule.yml/badge.svg)
 
-# ansible-role-gographite
+# ansible-collection-gographite
 
 Installs and configures [go-carbon](https://github.com/go-graphite/go-carbon) and [carbonapi](https://github.com/go-graphite/carbonapi).  
 All roles of the collection should work without adding any custom configuration.  
