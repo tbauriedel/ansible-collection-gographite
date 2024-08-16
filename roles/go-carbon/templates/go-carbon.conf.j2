@@ -1,4 +1,4 @@
-# {{ ansible_managed }}
+{{ ansible_managed | comment }}
 
 [common]
 user = "{{ go_carbon_user }}"
@@ -10,7 +10,7 @@ metric-interval = "{{ go_carbon_metric_interval }}"
 [whisper]
 data-dir = "{{ go_carbon_storage_dir }}/whisper/"
 schemas-file = "/etc/go-carbon/storage-schemas.conf"
-{%if go_carbon_storage_aggregation | length > 0 %}
+{% if go_carbon_storage_aggregation | length > 0 %}
 aggregation-file = "/etc/go-carbon/storage-aggregation.conf"
 {% else %}
 aggregation-file = ""
@@ -32,6 +32,10 @@ online-migration-global-scope = ""
 [cache]
 max-size = {{ go_carbon_cache_max_size }}
 write-strategy = "max"
+
+[carbonserver]
+listen = "{{ go_carbon_carbonserver_listen }}"
+enabled = {{ go_carbon_carbonserver_enabled }}
 
 [udp]
 listen = "{{ go_carbon_upd_listen }}"

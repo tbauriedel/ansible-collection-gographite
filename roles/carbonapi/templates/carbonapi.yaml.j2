@@ -1,0 +1,94 @@
+{{ ansible_managed | comment }}
+
+listeners:
+{% for listen in carbonapi_listeners %}
+  - address: "{{ listen }}"
+{% endfor %}
+prefix: "{{ carbonapi_prefix }}"
+useCachingDNSResolver: {{ carbonapi_caching_dns_resolver }}
+cachingDNSRefreshTime: "{{ carbonapi_caching_dns_time }}"
+{% if carbonapi_expvar.enabled %}
+expvar:
+  enabled: {{ carbonapi_expvar.enabled }}
+  pprofEnabled: {{ carbonapi_expvar.pprofEnabled }}
+  listen: "{{ carbonapi_expvar.listen }}"
+{% endif %}
+unicodeRangeTables:
+{% for charset in carbonapi_charsets %}
+  - "{{ charset }}"
+{% endfor %}
+{% if carbonapi_pass_headers | length > 0 %}
+headersToPass:
+{% for header in carbonapi_pass_headers %}
+  - "{{ header }}"
+{% endfor %}
+{% endif %}
+{% if carbonapi_log_headers | length > 0 %}
+headersToLog:
+{% for header in carbonapi_log_headers %}
+  - "{{ header }}"
+{% endfor %}
+{% endif %}
+{% if carbonapi_defines | length > 0 %}
+define:
+{% for define in carbonapi_defines %}
+  -
+    name: "{{ define.name }}"
+    template: "{{ define.template }}"
+{% endfor %}
+{% endif %}
+notFoundStatusCode: {{ carbonapi_not_found_rc }}
+concurency: {{ carbonapi_concurency }}
+{% if carbonapi_cache is defined %}
+cache:
+{% for key, value in carbonapi_cache.items() %}  
+  {{ key }}: {{ value }}
+{% endfor %}
+{% endif %}
+cpus: {{ carbonapi_cpus }}
+tz: ""
+extractTagsFromArgs: {{ carbonapi_extract_tags_form_args }}
+{% if carbonapi_functions_config is defined %}
+functionsConfig:
+{% for key, value in carbonapi_functions_config %}
+  {{ key }}: {{ value }}
+{% endfor %}
+{% endif %}
+maxBatchSize: {{ carbonapi_max_batch_size }}
+{% if carbonapi_graphite.enabled %}
+graphite:
+  host: "{{ carbonapi_graphite.host }}"
+  interval: "{{ carbonapi_graphite.interval }}"
+  prefix: "{{ carbonapi_graphite.prefix }}"
+  pattern: "{{ carbonapi_graphite.pattern }}"
+{% endif %}
+idleConnections: {{ carbonapi_max_idle_conns }}
+{% if carbonapi_pid_file | length > 0 %}
+pidFile: "{{ carbonapi_pid_file }}"
+{% endif %}
+upstreams:
+    slowLogThreshold: "{{ carbonapi_slow_log }}"
+    timeouts:
+        find: "{{ carbonapi_timeouts.find }}"
+        render: "{{ carbonapi_timeouts.render }}"
+        connect: "{{ carbonapi_timeouts.connect }}"
+    concurrencyLimitPerServer: {{ carbonapi_concurrency_limit_per_server }}
+    keepAliveInterval: "{{ carbonapi_keepalive_interval }}"
+    maxIdleConnsPerHost: {{ carbonapi_max_idle_conns }}
+    backends:
+{% for backend in carbonapi_backends %}
+        - "{{ backend }}"
+{% endfor %}
+    backendsv2:
+      backends:
+{% for row in carbonapi_backendsv2 %}
+        -
+          groupName: {{ row.groupname}}
+          protocol: {{ row.protocol }}
+          lbMethod: {{ row.lb_method }}
+          maxTries: {{ row.max_tries}}
+          servers:
+{% for server in row.servers %}
+            - "{{ server }}"
+{% endfor %}
+{% endfor %}
