@@ -1,4 +1,5 @@
 ![Lint](https://github.com/tbauriedel/ansible-collection-gographite/actions/workflows/linting.yml/badge.svg)
+![Molecule](https://github.com/tbauriedel/ansible-collection-gographite/actions/workflows/molecule.yml/badge.svg)
 
 # ansible-role-gographite
 

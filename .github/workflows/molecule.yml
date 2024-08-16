@@ -1,5 +1,5 @@
 ---
-name: Test role carbonapi
+name: Ansible deployment
 
 on:
   pull_request:
@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         distro: ['rockylinux8', 'ubuntu2204', 'debian12']
-        scenario: ['carbonapi']
+        scenario: ['carbonapi', 'go-carbon']
 
     steps:
       - name: Checkout code
