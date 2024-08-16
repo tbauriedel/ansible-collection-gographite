@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+
+  collections:
+    - tbauriedel.gographite
+
+  roles:
+    - carbonapi

@@ -18,6 +18,7 @@
   ansible.builtin.dnf:
     name: "{{ _fetched_source.dest }}"
     state: present
+    disable_gpg_check: true
   when: ansible_os_family == 'RedHat'
 
 - name: Ensure config-dir exists
