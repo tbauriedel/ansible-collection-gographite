@@ -1,11 +1,11 @@
 namespace: tbauriedel
 name: gographite
-version: 0.0.2
+version: 0.0.3
 readme: README.md
 authors:
   - Tobias Bauriedel <tobias@bauriedel.de>
 description: >
-  Installs / configure go-carbon and carbonapi.
+  Ansible collection for the installation and configuration of the tool stack around the go-graphite project.
 license:
   - Apache-2.0
 tags:
