@@ -1,6 +1,6 @@
 namespace: tbauriedel
 name: gographite
-version: 0.0.1
+version: 0.0.2
 readme: README.md
 authors:
   - Tobias Bauriedel <tobias@bauriedel.de>
@@ -11,7 +11,8 @@ license:
 tags:
   - collection
   - metrics
-  - graphite
-  - go-carbon
+  - gographite
+  - gocarbon
+  - carbonapi
 dependencies: {}
 repository: https://github.com/tbauriedel/ansible-collection-gographite
