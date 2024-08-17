@@ -1,22 +1,22 @@
 {{ ansible_managed | comment }}
 
 [common]
-user = "{{ go_carbon_user }}"
+user = "{{ gocarbon_user }}"
 graph-prefix = "carbon.agents.{host}"
 metric-endpoint = "local"
-max-cpu = {{ go_carbon_max_cpu }}
-metric-interval = "{{ go_carbon_metric_interval }}"
+max-cpu = {{ gocarbon_max_cpu }}
+metric-interval = "{{ gocarbon_metric_interval }}"
 
 [whisper]
-data-dir = "{{ go_carbon_storage_dir }}/whisper/"
+data-dir = "{{ gocarbon_storage_dir }}/whisper/"
 schemas-file = "/etc/go-carbon/storage-schemas.conf"
-{% if go_carbon_storage_aggregation | length > 0 %}
+{% if gocarbon_storage_aggregation | length > 0 %}
 aggregation-file = "/etc/go-carbon/storage-aggregation.conf"
 {% else %}
 aggregation-file = ""
 {% endif %}
 quotas-file = ""
-workers = {{ go_carbon_whisper_workers }}
+workers = {{ gocarbon_whisper_workers }}
 max-updates-per-second = 0
 sparse-create = false
 physical-size-factor = 0.75
@@ -30,43 +30,43 @@ online-migration-rate = 5
 online-migration-global-scope = ""
 
 [cache]
-max-size = {{ go_carbon_cache_max_size }}
+max-size = {{ gocarbon_cache_max_size }}
 write-strategy = "max"
 
 [carbonserver]
-listen = "{{ go_carbon_carbonserver_listen }}"
-enabled = {{ go_carbon_carbonserver_enabled }}
+listen = "{{ gocarbon_carbonserver_listen }}"
+enabled = {{ gocarbon_carbonserver_enabled }}
 
 [udp]
-listen = "{{ go_carbon_upd_listen }}"
-enabled = {{ go_carbon_udp_enabled }}
+listen = "{{ gocarbon_upd_listen }}"
+enabled = {{ gocarbon_udp_enabled }}
 buffer-size = 0
 
 [tcp]
-listen = "{{ go_carbon_tcp_listen }}"
-enabled = {{ go_carbon_tcp_enabled }}
+listen = "{{ gocarbon_tcp_listen }}"
+enabled = {{ gocarbon_tcp_enabled }}
 buffer-size = 0
 compression = ""
 
 [carbonlink]
-listen = "{{ go_carbon_carbonlink_listen }}"
-enabled = {{ go_carbon_carbonlink_enabled }}
+listen = "{{ gocarbon_carbonlink_listen }}"
+enabled = {{ gocarbon_carbonlink_enabled }}
 read-timeout = "30s"
 
 [pickle]
-listen = "{{ go_carbon_pickle_listen }}"
+listen = "{{ gocarbon_pickle_listen }}"
 max-message-size = 67108864
-enabled = {{ go_carbon_pickle_enabled }}
+enabled = {{ gocarbon_pickle_enabled }}
 buffer-size = 0
 
-{% if go_carbon_extra_conf | length > 0 %}
-{{ go_carbon_extra_conf }}
+{% if gocarbon_extra_conf | length > 0 %}
+{{ gocarbon_extra_conf }}
 {% endif %}
 
 [[logging]]
 logger = ""
-file = "{{ go_carbon_logging_file }}"
-level = "{{ go_carbon_logging_severity }}"
+file = "{{ gocarbon_logging_file }}"
+level = "{{ gocarbon_logging_severity }}"
 encoding = "mixed"
 encoding-time = "iso8601"
 encoding-duration = "seconds"

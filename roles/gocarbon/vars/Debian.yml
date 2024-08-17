@@ -1,0 +1,2 @@
+---
+gocarbon_release_package: "https://github.com/go-graphite/go-carbon/releases/download/v{{ gocarbon_version }}/go-carbon_{{ gocarbon_version }}_amd64.deb"

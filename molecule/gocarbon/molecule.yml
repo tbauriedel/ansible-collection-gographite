@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: go-carbon
+  - name: gocarbon
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2204}-ansible:latest"
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     cgroupns_mode: host
