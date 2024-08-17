@@ -1,0 +1,5 @@
+{{ ansible_managed | comment }}
+
+{% if gocarbon_storage_aggregation | length > 0 %}
+{{ gocarbon_storage_aggregation }}
+{% endif %}

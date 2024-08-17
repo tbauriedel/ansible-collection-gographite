@@ -1,0 +1,34 @@
+---
+gocarbon_version: 0.17.3
+
+gocarbon_storage_dir: /var/lib/graphite
+gocarbon_group: carbon
+gocarbon_user: carbon
+
+gocarbon_max_cpu: 1
+gocarbon_metric_interval: 1m0s
+gocarbon_whisper_workers: 1
+gocarbon_cache_max_size: 1000000
+gocarbon_udp_enabled: "true"
+gocarbon_upd_listen: 127.0.0.1:2003
+gocarbon_tcp_enabled: "true"
+gocarbon_tcp_listen: 127.0.0.1:2003
+gocarbon_carbonlink_enabled: "true"
+gocarbon_carbonlink_listen: 127.0.0.1:7200
+gocarbon_pickle_enabled: "true"
+gocarbon_pickle_listen: 127.0.0.1:2004
+gocarbon_carbonserver_enabled: "true"
+gocarbon_carbonserver_listen: 127.0.0.1:8080
+
+gocarbon_logging_file: /var/log/go-carbon/go-carbon.log
+gocarbon_logging_severity: warn
+
+gocarbon_extra_conf: ""
+
+gocarbon_storage_schemas:
+  - name: default
+    pattern: .*
+    retentions: 60s:30d,1h:5y
+    compressed: "false"
+
+gocarbon_storage_aggregation: ""

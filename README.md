@@ -10,7 +10,7 @@ Collection tested on RockyLinux 8, Debian 12 and Ubuntu 22.04.
 
 ## Roles
 
-* [go-carbon](roles/go-carbon/README.md): Install and configure go-carbon
+* [gocarbon](roles/gocarbon/README.md): Install and configure go-carbon
 * [carbonapi](roles/carbonapi/README.md) Install and configure carbonapi
 
   
@@ -21,7 +21,7 @@ Collection tested on RockyLinux 8, Debian 12 and Ubuntu 22.04.
   become: true
   collections: tbauriedel.gographite
   roles:
-    - go-carbon
+    - gocarbon
     - carbonapi
 ```
 

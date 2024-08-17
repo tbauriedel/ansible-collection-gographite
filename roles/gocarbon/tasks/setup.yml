@@ -1,9 +1,9 @@
 ---
 - name: Fetch package from source
   ansible.builtin.get_url:
-    url: "{{ go_carbon_release_package }}"
+    url: "{{ gocarbon_release_package }}"
     dest: /tmp
-    mode: '0755'
+    mode: "0755"
     timeout: 60
   register: _fetched_source
   changed_when: false
@@ -23,25 +23,25 @@
 
 - name: Ensure storage-dir exists
   ansible.builtin.file:
-    path: "{{ go_carbon_storage_dir }}"
+    path: "{{ gocarbon_storage_dir }}"
     state: directory
-    mode: '0755'
-    owner: "{{ go_carbon_user }}"
-    group: "{{ go_carbon_group }}"
+    mode: "0755"
+    owner: "{{ gocarbon_user }}"
+    group: "{{ gocarbon_group }}"
 
 - name: Ensure whisper-dir exists
   ansible.builtin.file:
-    path: "{{ go_carbon_storage_dir }}/whisper"
+    path: "{{ gocarbon_storage_dir }}/whisper"
     state: directory
-    mode: '0755'
-    owner: "{{ go_carbon_user }}"
-    group: "{{ go_carbon_group }}"
+    mode: "0755"
+    owner: "{{ gocarbon_user }}"
+    group: "{{ gocarbon_group }}"
 
 - name: Place go-carbon configuration
   ansible.builtin.template:
     src: go-carbon.conf.j2
     dest: /etc/go-carbon/go-carbon.conf
-    mode: '0644'
+    mode: "0644"
     owner: root
     group: root
   notify: Restart go-carbon
@@ -50,7 +50,7 @@
   ansible.builtin.template:
     src: storage-schemas.conf.j2
     dest: /etc/go-carbon/storage-schemas.conf
-    mode: '0644'
+    mode: "0644"
     owner: root
     group: root
   notify: Restart go-carbon
@@ -59,7 +59,7 @@
   ansible.builtin.template:
     src: storage-aggregation.conf.j2
     dest: /etc/go-carbon/storage-aggregation.conf
-    mode: '0644'
+    mode: "0644"
     owner: root
     group: root
   notify: Restart go-carbon
