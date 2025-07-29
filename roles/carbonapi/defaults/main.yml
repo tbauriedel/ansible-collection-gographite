@@ -1,5 +1,5 @@
 ---
-carbonapi_version: 0.16.0
+carbonapi_version: 0.17.0
 carbonapi_user: carbon
 
 carbonapi_listeners:
