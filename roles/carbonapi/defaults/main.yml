@@ -4,6 +4,7 @@ carbonapi_user: carbon
 
 carbonapi_listeners:
   - 127.0.0.1:8888
+  - "[::1]:8888"
 carbonapi_prefix: ""
 carbonapi_caching_dns_resolver: "false"
 carbonapi_caching_dns_time: 1m
